@@ -1,0 +1,18 @@
+meta {
+  name: Create City
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/city
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Cairo",
+    "country": "507f1f77bcf86cd799439011"
+  }
+}

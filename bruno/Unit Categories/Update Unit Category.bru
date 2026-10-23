@@ -1,0 +1,18 @@
+meta {
+  name: Update Unit Category
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/unit-category/6ac9b9400d9b75bfb85ee7d7
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Living Room",
+    "icon": "sofa"
+  }
+}

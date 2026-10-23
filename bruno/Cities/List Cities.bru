@@ -1,0 +1,18 @@
+meta {
+  name: List Cities
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/city
+  body: none
+  auth: none
+}
+
+query {
+  page: 1
+  limit: 10
+  name: Cairo
+  country: 507f1f77bcf86cd799439011
+}

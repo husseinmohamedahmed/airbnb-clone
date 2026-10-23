@@ -1,0 +1,18 @@
+meta {
+  name: Create Currency
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/currency
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Egyptian Pound",
+    "currencyCode": "EGP"
+  }
+}

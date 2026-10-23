@@ -1,0 +1,18 @@
+meta {
+  name: Update City
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/city/507f1f77bcf86cd799439012
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Giza",
+    "country": "507f1f77bcf86cd799439011"
+  }
+}

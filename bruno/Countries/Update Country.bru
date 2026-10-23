@@ -1,0 +1,18 @@
+meta {
+  name: Update Country
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/country/507f1f77bcf86cd799439011
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Arab Republic of Egypt",
+    "countryCode": "EG"
+  }
+}

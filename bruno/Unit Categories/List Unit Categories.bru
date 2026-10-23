@@ -1,0 +1,18 @@
+meta {
+  name: List Unit Categories
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/unit-category?page=1&limit=10
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 1
+  limit: 10
+  ~name: Bedroom
+  ~icon: bed
+}

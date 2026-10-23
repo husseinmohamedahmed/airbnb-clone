@@ -1,0 +1,18 @@
+meta {
+  name: Upsert App Settings
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{baseUrl}}/app-settings
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "vatRate": 14,
+    "minPrice": 109
+  }
+}

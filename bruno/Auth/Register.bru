@@ -1,0 +1,26 @@
+meta {
+  name: Register
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/auth/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Hussein Mohamed",
+    "email": "hussein1234@gmail.com",
+    "password": "Password123",
+    "phoneNumber": "01234567899"
+  }
+}
+
+script:post-response {
+  const data = res.getBody();
+  bru.setEnvVar("accessToken", data.accessToken);
+  bru.setEnvVar("refreshToken", data.refreshToken);
+}
