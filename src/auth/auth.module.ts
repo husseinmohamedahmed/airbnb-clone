@@ -7,15 +7,18 @@ import { ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { refreshTokenSchema } from './schemas/refresh-token.schema';
 import { RegisterUsecase } from './use-cases/register.usecase';
-import { LoginUsecase } from './use-cases/login.usecase';
 import { GenerateTokenUsecase } from './use-cases/generate-token.usecase';
 import { RefreshTokenUsecase } from './use-cases/refresh-token.usecase';
 import { ModelNames } from '../common/data-access/model-names.enum';
 import { RefreshTokenRepository } from './repository/refresh-token.repository';
-
+import { LoginAsAdminUsecase } from './use-cases/login-as-admin.usecase';
+import { LoginAsUserUsecase } from './use-cases/login-as-user.usecase';
+import { LoginUsecase } from './use-cases/login.usecase';
+import { SystemAdminsModule } from '../system-admins/system-admins.module';
 @Module({
   imports: [
     UsersModule,
+    SystemAdminsModule,
     JwtModule.registerAsync({
       useFactory: (configService: ConfigService) => {
         return {
@@ -33,6 +36,8 @@ import { RefreshTokenRepository } from './repository/refresh-token.repository';
   providers: [
     AuthService,
     RegisterUsecase,
+    LoginAsAdminUsecase,
+    LoginAsUserUsecase,
     LoginUsecase,
     GenerateTokenUsecase,
     RefreshTokenUsecase,

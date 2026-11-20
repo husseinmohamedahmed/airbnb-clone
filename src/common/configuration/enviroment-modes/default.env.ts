@@ -10,5 +10,10 @@ export const defaultEnv = (): EnviromentInterface => {
     jwtSecret: process.env.JWT_SECRET as string,
     expiresIn: process.env.EXPIRES_IN as string,
     refreshTokenExpiration: process.env.REFRESH_TOKEN_EXPIRATION as string,
+   systemadmin: {
+      name: process.env.NAME as string,
+      email: process.env.EMAIL as string,
+      password: process.env.PASSWORD as string,
+    },
   };
 };

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { RegisterDto } from './dtos/register.dto';
-
+import { Ipayload } from './interfaces/payload.interface';
 import { LoginDto } from './dtos/login.dto';
 
 import { RefreshTokenDto } from './dtos/refresh-token.dto';
@@ -25,8 +25,8 @@ export class AuthService {
   async login(body: LoginDto): Promise<AuthResponseDto> {
     return this.loginUsecase.execute(body);
   }
-  async generateTokens(userId: string) {
-    return this.generateTokenUsecase.execute(userId);
+  async generateTokens(payload: Ipayload) {
+    return this.generateTokenUsecase.execute(payload);
   }
   async generateRefreshToken(body: RefreshTokenDto) {
     return this.refreshTokenUsecase.execute(body);

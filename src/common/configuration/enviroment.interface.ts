@@ -6,4 +6,11 @@ export interface EnviromentInterface {
   jwtSecret: string;
   expiresIn: string;
   refreshTokenExpiration: string;
+  systemadmin: ISystemAdminEnviroment;
+}
+
+export interface ISystemAdminEnviroment {
+  name: string;
+  email: string;
+  password: string;
 }

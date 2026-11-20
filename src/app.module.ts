@@ -8,6 +8,7 @@ import { CitiesModule } from './cities/cities.module';
 import { CurrencyModule } from './currency/currency.module';
 import { UnitCategoryModule } from './unit-category/unit-category.module';
 import { AppSettingsModule } from './app-settings/app-settings.module';
+import { SystemAdminsModule } from './system-admins/system-admins.module';
 @Module({
   imports: [
     CoreModule,
@@ -17,6 +18,7 @@ import { AppSettingsModule } from './app-settings/app-settings.module';
     CurrencyModule,
     UnitCategoryModule,
     AppSettingsModule,
+    SystemAdminsModule,
   ],
   providers: [{ provide: APP_FILTER, useClass: CustomExceptionFilter }],
 })

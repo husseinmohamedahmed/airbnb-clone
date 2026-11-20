@@ -16,4 +16,5 @@ export class AppSettingsController {
   async findAppSettings(): Promise<AppSettingsResponseDto> {
     return this.appSettingsService.findAppSettings();
   }
+  
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { Ipayload } from '../interfaces/payload.interface';
 import { AuthResponseDto } from '../dtos/auth-response.dto';
 import { plainToInstance } from 'class-transformer';
 import { RefreshTokenRepository } from '../repository/refresh-token.repository';
@@ -13,15 +14,15 @@ export class GenerateTokenUsecase {
     private readonly refreshTokenRepository: RefreshTokenRepository,
     private readonly configService: ConfigService,
   ) {}
-  async execute(userId: string): Promise<AuthResponseDto> {
-    const accessToken = await this.jwtService.signAsync({ userId });
+  async execute(payload:Ipayload): Promise<AuthResponseDto> {
+    const accessToken = await this.jwtService.signAsync({ userId: payload.id,role:payload.role });
     const refreshToken = await this.jwtService.signAsync(
-      { userId, type: 'refreshToken' },
+      { userId:payload.id,role:payload.role, type: 'refreshToken' },
       { expiresIn: this.configService.getOrThrow('refreshTokenExpiration') },
     );
     const hashedRefreshToken = await bcrypt.hash(refreshToken, 10);
     await this.refreshTokenRepository.findOneAndUpdate(
-      { userId },
+      { userId: payload.id },
       { refreshToken: hashedRefreshToken },
       { new: true, upsert: true },
     );
